@@ -1,4 +1,4 @@
-import { Bot, ConsoleLogger, MemoryStorage, BotStateManager } from 'botbuilder';
+import { Bot, MemoryStorage, BotStateManager } from 'botbuilder';
 import { BotFrameworkAdapter } from 'botbuilder-services';
 import * as restify from 'restify';
 
@@ -14,7 +14,6 @@ server.post('/api/messages', adapter.listen() as any);
 
 // Initialize bot
 const bot = new Bot(adapter)
-    .use(new ConsoleLogger())
     .use(new MemoryStorage())
     .use(new BotStateManager())
     .onReceive(context => {
